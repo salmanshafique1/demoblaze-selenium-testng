@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke Suite" parallel="tests" thread-count="2">
+    <test name="Purchase Tests">
+        <classes>
+            <class name="com.tests.ui.PlaceOrderTest"/>
+        </classes>
+    </test>
+</suite>
