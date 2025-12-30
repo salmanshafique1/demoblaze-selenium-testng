@@ -22,8 +22,4 @@ public class Waits {
     public WebElement forClickable(WebElement element){
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-    public List<WebElement> forVisibleElements(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-    }
-
 }

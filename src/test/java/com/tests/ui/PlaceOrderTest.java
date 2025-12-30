@@ -9,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class PlaceOrderTest extends BaseTest {
-
     @Test(description = "Verify user can purchase a laptop without login", groups = {"smoke", "regression"})
     public void userCanPurchaseProduct_withoutLogin() {
         HomePage homePage = new HomePage();
@@ -39,7 +38,7 @@ public class PlaceOrderTest extends BaseTest {
         ).clickPurchase();
         try { Thread.sleep(1800); } catch (InterruptedException ignored) {}
         String confirmationDetails = orderModal.getConfirmationDetails();
-        try { Thread.sleep(1800); } catch (InterruptedException ignored) {}
+
         Assert.assertTrue(confirmationDetails.toLowerCase().contains("amount"));
 
         orderModal.confirmOrder();

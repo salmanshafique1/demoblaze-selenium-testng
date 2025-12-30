@@ -1,10 +1,14 @@
 
 package com.tests.pages;
 
+import com.framework.exceptions.FrameworkException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class HomePage extends BasePage{
@@ -29,6 +33,7 @@ public class HomePage extends BasePage{
     }
     public CartPage goToCart(){
         click(cartLink);
+        waits.forVisible(driver.findElement(By.id("totalp")));
         return new CartPage();
     }
     public HomePage selectCategory(String categoryName){
@@ -40,29 +45,22 @@ public class HomePage extends BasePage{
         }
         return this;
     }
-
     public ProductPage openProductByName(String productName) {
-
-
-        for (int i = 0; i < 3; i++) {
-            try {
-                List<WebElement> products =
-                        driver.findElements(By.cssSelector(".hrefch"));
-
-                for (WebElement product : products) {
-                    if (product.getText().trim().equalsIgnoreCase(productName)) {
-                        waits.forClickable(product).click();
-                        return new ProductPage();
+        // We use a custom wait that ignores the Stale exception
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .ignoring(StaleElementReferenceException.class)
+                .until(d -> {
+                    List<WebElement> products = d.findElements(By.cssSelector(".hrefch"));
+                    for (WebElement product : products) {
+                        if (product.getText().trim().equalsIgnoreCase(productName)) {
+                            product.click();
+                            return true;
+                        }
                     }
-                }
+                    return false;
+                });
 
-            } catch (Exception e) {
-
-                try { Thread.sleep(1500); } catch (InterruptedException ignored) {}
-            }
-        }
-
-        throw new RuntimeException("Product not found: " + productName);
+        return new ProductPage();
     }
 
 }

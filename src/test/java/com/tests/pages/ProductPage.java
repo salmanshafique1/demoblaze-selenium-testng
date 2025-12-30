@@ -25,20 +25,11 @@ public class ProductPage extends BasePage {
     public String getPriceText() {
         return getText(priceContainer);
     }
-
     public ProductPage addToCartAndAcceptAlert() {
-
         click(addToCartLink);
-
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
-
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException ignored) {
-        }
-
         return this;
     }
 }
