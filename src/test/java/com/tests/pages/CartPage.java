@@ -34,9 +34,9 @@ public class CartPage extends BasePage{
         return this;
     }
 
-    public PlaceOrderModal clickPlaceOrder() {
+    public PlaceOrderPage clickPlaceOrder() {
         click(placeOrderButton);
-        return new PlaceOrderModal();
+        return new PlaceOrderPage();
     }
 
 

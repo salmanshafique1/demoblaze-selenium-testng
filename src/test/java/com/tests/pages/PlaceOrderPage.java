@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PlaceOrderModal extends BasePage {
+public class PlaceOrderPage extends BasePage {
 
     @FindBy(id = "name") private WebElement nameInput;
     @FindBy(id = "country") private WebElement countryInput;
@@ -22,12 +22,12 @@ public class PlaceOrderModal extends BasePage {
             By.cssSelector(".sweet-alert.showSweetAlert.visible p");
 
 
-    public PlaceOrderModal fillOrderForm(String name,
-                                         String country,
-                                         String city,
-                                         String card,
-                                         String month,
-                                         String year) {
+    public PlaceOrderPage fillOrderForm(String name,
+                                        String country,
+                                        String city,
+                                        String card,
+                                        String month,
+                                        String year) {
 
         type(nameInput, name);
         type(countryInput, country);
@@ -39,7 +39,7 @@ public class PlaceOrderModal extends BasePage {
         return this;
     }
 
-    public PlaceOrderModal clickPurchase() {
+    public PlaceOrderPage clickPurchase() {
         click(purchaseButton);
         return this;
     }

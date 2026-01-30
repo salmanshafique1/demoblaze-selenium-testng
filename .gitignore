@@ -5,6 +5,9 @@ target/
 allure-results/
 allure-report/
 .idea/
+# Logs
+*.log
+logs/
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

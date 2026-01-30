@@ -1,17 +1,18 @@
 
 package com.tests.pages;
 
-import com.framework.exceptions.FrameworkException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.List;
-
+import org.slf4j.Logger;
 public class HomePage extends BasePage{
+    private static final Logger log = LoggerFactory.getLogger("HomePage.class");
 
     @FindBy(id = "login2")
     private WebElement loginLink;
@@ -23,13 +24,13 @@ public class HomePage extends BasePage{
     private List<WebElement> categoryLinks;
     @FindBy(css = ".hrefch")
     private List<WebElement> productLinks;
-    public LoginModal openLoginModal(){
+    public LoginPage openLoginModal(){
         click(loginLink);
-        return new LoginModal();
+        return new LoginPage();
     }
-    public SignupModal  openSignupModal(){
+    public SignupPage openSignupModal(){
         click(signupLink);
-        return new SignupModal();
+        return new SignupPage();
     }
     public CartPage goToCart(){
         click(cartLink);
@@ -37,7 +38,9 @@ public class HomePage extends BasePage{
         return new CartPage();
     }
     public HomePage selectCategory(String categoryName){
+        log.info("Selecting Category: {}", categoryName);
         for(WebElement category: categoryLinks){
+
             if(category.getText().trim().equalsIgnoreCase(categoryName)){
                 click(category);
                 break;

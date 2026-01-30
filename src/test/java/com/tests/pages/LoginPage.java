@@ -5,7 +5,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginModal extends BasePage{
+public class LoginPage extends BasePage{
 
     @FindBy(id = "loginusername")
     private WebElement loginUsernameInput;
@@ -16,11 +16,11 @@ public class LoginModal extends BasePage{
     @FindBy(id = "nameofuser")
     private WebElement loggedInUserLabel;
 
-    public LoginModal enterUsername(String username){
+    public LoginPage enterUsername(String username){
         type(loginUsernameInput, username);
         return this;
     }
-    public LoginModal enterPassword(String password){
+    public LoginPage enterPassword(String password){
         type(loginPasswordInput, password);
         return this;
     }

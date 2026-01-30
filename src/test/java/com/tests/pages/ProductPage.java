@@ -6,8 +6,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class ProductPage extends BasePage {
+
+    private static final Logger log = LoggerFactory.getLogger(ProductPage.class);
 
     @FindBy(css = ".name")
     private WebElement productTitle;
@@ -26,6 +30,7 @@ public class ProductPage extends BasePage {
         return getText(priceContainer);
     }
     public ProductPage addToCartAndAcceptAlert() {
+        log.info("Adding product to cart");
         click(addToCartLink);
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.alertIsPresent());

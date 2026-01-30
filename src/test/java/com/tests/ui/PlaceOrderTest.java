@@ -3,13 +3,13 @@ package com.tests.ui;
 import com.tests.base.BaseTest;
 import com.tests.pages.CartPage;
 import com.tests.pages.HomePage;
-import com.tests.pages.PlaceOrderModal;
+import com.tests.pages.PlaceOrderPage;
 import com.tests.pages.ProductPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class PlaceOrderTest extends BaseTest {
-    @Test(description = "Verify user can purchase a laptop without login", groups = {"smoke", "regression"})
+    @Test(description = "Verify user can purchase a laptop without login", groups = {"Functional"})
     public void userCanPurchaseProduct_withoutLogin() {
         HomePage homePage = new HomePage();
         homePage.selectCategory("Laptops");
@@ -27,7 +27,7 @@ public class PlaceOrderTest extends BaseTest {
         int totalPrice = cartPage.getTotalPrice();
         Assert.assertTrue(totalPrice > 0, "Total price should be greater than zero");
 
-        PlaceOrderModal orderModal = cartPage.clickPlaceOrder();
+        PlaceOrderPage orderModal = cartPage.clickPlaceOrder();
         orderModal.fillOrderForm(
                 "Test User",
                 "USA",

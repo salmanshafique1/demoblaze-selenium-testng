@@ -1,16 +1,26 @@
-# Demoblaze Selenium TestNG Automation Framework
-This project is a selenium 4 automation framework built using Java and TestNG to automate end to end scenarios for the Demoblaze demo application.
-WebDriverManager is included for compatibility with existing framework patterns. 
+# Demoblaze Automation Framework
 
-## Tech Stack
--Java (JDK 17)
--Selenium 4
--TestNG
--Maven
--IntelliJ IDEA
--Allure Reporting 
+A robust, scalable, and thread-safe Selenium automation framework designed for high-performance testing of the DemoBlaze e-commerce website. This project demonstrates industry-standard design patterns, custom synchronization strategies, and comprehensive observability.
 
-## Project Structure 
--Page Object Model (POM)
--Base test setup
+## 🚀 Key Framework Features
 
+* **Design Pattern:** Full implementation of the **Page Object Model (POM)** to ensure high maintainability and code reusability.
+* **Creational Patterns:** Utilizes a **Factory Pattern** for WebDriver instantiation and a **Singleton Pattern** for centralized configuration management.
+* **Logging & Observability:** Integrated **SLF4J + Logback** for granular execution tracing, providing a detailed "play-by-play" of test interactions.
+* **Reporting:** **Allure Report** integration providing high-level dashboards, step-by-step execution visibility, and severity categorization.
+* **Configuration Management:** Centralized property management with support for dynamic environment overrides (BaseURL, Browser, Headless, Grid).
+
+---
+
+## 🛠 Tech Stack
+
+| Component | Technology      |
+| :--- |:----------------|
+| **Language** | Java 17         |
+| **Automation Tool** | Selenium 4      |
+| **Test Engine** | TestNG          |
+| **Build Tool** | Maven           |
+| **Logging** | SLF4J / Logback |
+| **Reporting** | Allure          |
+
+---
